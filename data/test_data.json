@@ -1,0 +1,31 @@
+{
+    "register_user": {
+        "name": "Automation Test",
+        "password": "Test@12345",
+        "day": "10",
+        "month": "5",
+        "year": "2000",
+        "first_name": "Automation",
+        "last_name": "Test",
+        "company": "Automation Company",
+        "address": "123 Test Street",
+        "address_2": "Apartment 01",
+        "country": "Canada",
+        "state": "Ontario",
+        "city": "Toronto",
+        "zipcode": "12345",
+        "mobile_number": "0123456789"
+    },
+
+    "login_user": {
+        "email": "automation_login@example.com",
+        "password": "Test@12345"
+    },
+
+    "contact_us": {
+        "name": "Automation Test",
+        "email": "automation_contact@example.com",
+        "subject": "Testing Contact Us Form",
+        "message": "This is an automated test message for TC_06."
+    }
+}
