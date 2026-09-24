@@ -7,7 +7,7 @@ class ContactUsPage(BasePage):
 
     GET_IN_TOUCH_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'Get In Touch')]"
+        "//h2[normalize-space()='Get In Touch']"
     )
 
     NAME_INPUT = (
@@ -32,7 +32,7 @@ class ContactUsPage(BasePage):
 
     UPLOAD_FILE = (
         By.CSS_SELECTOR,
-        "input[type='file']"
+        "input[type='file'][name='upload_file']"
     )
 
     SUBMIT_BUTTON = (
@@ -42,12 +42,13 @@ class ContactUsPage(BasePage):
 
     SUCCESS_MESSAGE = (
         By.XPATH,
-        "//*[contains(text(), 'Success! Your details have been submitted successfully.')]"
+        "//div[contains(@class, 'alert-success') and "
+        "normalize-space()='Success! Your details have been submitted successfully.']"
     )
 
     HOME_BUTTON = (
         By.XPATH,
-        "//a[contains(., 'Home')]"
+        "//a[normalize-space()='Home' and contains(@class, 'btn-success')]"
     )
 
     def is_get_in_touch_displayed(self):

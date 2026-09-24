@@ -8,22 +8,22 @@ class ProductsPage(BasePage):
 
     ALL_PRODUCTS_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'All Products')]"
+        "//h2[normalize-space()='All Products']"
     )
 
     FIRST_PRODUCT = (
         By.XPATH,
-        "(//div[contains(@class, 'product-image-wrapper')])[1]"
+        "//a[@href='/product_details/1']/ancestor::div[contains(@class, 'product-image-wrapper')][1]"
     )
 
     FIRST_PRODUCT_NAME = (
         By.XPATH,
-        "(//div[contains(@class, 'productinfo')]//p)[1]"
+        "//a[@href='/product_details/1']/ancestor::div[contains(@class, 'product-image-wrapper')][1]//div[contains(@class, 'productinfo')]//p"
     )
 
     FIRST_PRODUCT_VIEW_BUTTON = (
-        By.XPATH,
-        "(//a[contains(., 'View Product')])[1]"
+        By.CSS_SELECTOR,
+        "a[href='/product_details/1']"
     )
 
     SEARCH_INPUT = (
@@ -38,34 +38,32 @@ class ProductsPage(BasePage):
 
     SEARCHED_PRODUCTS_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'Searched Products')]"
+        "//h2[normalize-space()='Searched Products']"
     )
 
     SEARCHED_PRODUCTS = (
-        By.XPATH,
-        "//div[contains(@class, 'product-image-wrapper')]"
+        By.CSS_SELECTOR,
+        "div.product-image-wrapper a[data-product-id]"
     )
 
     FIRST_PRODUCT_ADD_TO_CART = (
-        By.XPATH,
-        "(//div[contains(@class, 'product-image-wrapper')])[1]"
-        "//a[contains(@class, 'add-to-cart')]"
+        By.CSS_SELECTOR,
+        "a.add-to-cart[data-product-id='1']"
     )
 
     SECOND_PRODUCT_ADD_TO_CART = (
-        By.XPATH,
-        "(//div[contains(@class, 'product-image-wrapper')])[2]"
-        "//a[contains(@class, 'add-to-cart')]"
+        By.CSS_SELECTOR,
+        "a.add-to-cart[data-product-id='2']"
     )
 
     CONTINUE_SHOPPING_BUTTON = (
         By.XPATH,
-        "//button[contains(., 'Continue Shopping')]"
+        "//button[normalize-space()='Continue Shopping']"
     )
 
     VIEW_CART_BUTTON = (
         By.XPATH,
-        "//u[contains(., 'View Cart')]"
+        "//a[@href='/view_cart' and .//u[normalize-space()='View Cart']]"
     )
 
     # =========================
@@ -73,21 +71,20 @@ class ProductsPage(BasePage):
     # =========================
 
     WOMEN_CATEGORY = (
-        By.XPATH,
-        "//div[@id='accordian']//a[@href='#Women']"
+        By.CSS_SELECTOR,
+        "#accordian a[href='#Women']"
     )
 
     DRESS_CATEGORY = (
         By.XPATH,
-        "//div[@id='Women']//a[contains(normalize-space(), 'Dress')]"
+        "//*[@id='Women']//a[normalize-space()='Dress']"
     )
 
     CATEGORY_PRODUCTS_TITLE = (
         By.XPATH,
-        "//h2[contains(translate(., "
+        "//h2[translate(normalize-space(.), "
         "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-        "'abcdefghijklmnopqrstuvwxyz'), "
-        "'dress products')]"
+        "'abcdefghijklmnopqrstuvwxyz')='dress products']"
     )
 
     # =========================
@@ -95,18 +92,18 @@ class ProductsPage(BasePage):
     # =========================
 
     POLO_BRAND = (
-        By.XPATH,
-        "//div[@class='brands_products']//a[contains(., 'Polo')]"
+        By.CSS_SELECTOR,
+        ".brands_products a[href='/brand_products/Polo']"
     )
 
     HM_BRAND = (
-        By.XPATH,
-        "//div[@class='brands_products']//a[contains(., 'H&M')]"
+        By.CSS_SELECTOR,
+        ".brands_products a[href='/brand_products/H&M']"
     )
 
     BRAND_PRODUCTS_TITLE = (
         By.XPATH,
-        "//h2[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'products')]"
+        "//h2[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'products')]"
     )
 
     def search_product(self, product_name):
@@ -178,10 +175,9 @@ class ProductsPage(BasePage):
     def is_polo_products_displayed(self):
         locator = (
             By.XPATH,
-            "//h2[contains(translate(., "
+            "//h2[contains(translate(normalize-space(.), "
             "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-            "'abcdefghijklmnopqrstuvwxyz'), "
-            "'polo products')]"
+            "'abcdefghijklmnopqrstuvwxyz'), 'polo products')]"
         )
 
         return self.is_visible(locator)
@@ -190,10 +186,9 @@ class ProductsPage(BasePage):
     def is_hm_products_displayed(self):
         locator = (
             By.XPATH,
-            "//h2[contains(translate(., "
+            "//h2[contains(translate(normalize-space(.), "
             "'ABCDEFGHIJKLMNOPQRSTUVWXYZ', "
-            "'abcdefghijklmnopqrstuvwxyz'), "
-            "'h&m products')]"
+            "'abcdefghijklmnopqrstuvwxyz'), 'h&m products')]"
         )
 
         return self.is_visible(locator)

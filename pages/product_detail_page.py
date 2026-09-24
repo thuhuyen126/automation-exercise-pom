@@ -6,38 +6,38 @@ from pages.base_page import BasePage
 class ProductDetailPage(BasePage):
 
     PRODUCT_INFORMATION = (
-        By.XPATH,
-        "//div[contains(@class, 'product-information')]"
+        By.CSS_SELECTOR,
+        "div.product-information"
     )
 
     PRODUCT_NAME = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//h2"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]/h2"
     )
 
     CATEGORY = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//p[contains(., 'Category:')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//p[starts-with(normalize-space(.), 'Category:')]"
     )
 
     PRICE = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//span[contains(., 'Rs.')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//span[starts-with(normalize-space(text()), 'Rs.')]"
     )
 
     AVAILABILITY = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//p[contains(., 'Availability:')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//p[starts-with(normalize-space(.), 'Availability:')]"
     )
 
     CONDITION = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//p[contains(., 'Condition:')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//p[starts-with(normalize-space(.), 'Condition:')]"
     )
 
     BRAND = (
         By.XPATH,
-        "//div[contains(@class, 'product-information')]//p[contains(., 'Brand:')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//p[starts-with(normalize-space(.), 'Brand:')]"
     )
 
     QUANTITY_INPUT = (
@@ -47,7 +47,7 @@ class ProductDetailPage(BasePage):
 
     ADD_TO_CART_BUTTON = (
     By.XPATH,
-    "//button[contains(., 'Add to cart')]"
+    "//div[contains(concat(' ', normalize-space(@class), ' '), ' product-information ')]//button[normalize-space()='Add to cart']"
     )
 
         # =========================
@@ -76,8 +76,8 @@ class ProductDetailPage(BasePage):
 
     REVIEW_SUCCESS_MESSAGE = (
         By.XPATH,
-        "//div[contains(@class, 'alert-success')]"
-        "//span[contains(., 'Thank you for your review.')]"
+        "//div[contains(concat(' ', normalize-space(@class), ' '), ' alert-success ')]"
+        "//span[normalize-space()='Thank you for your review.']"
     )
 
     def is_product_information_displayed(self):

@@ -37,7 +37,7 @@ class PaymentPage(BasePage):
 
     ORDER_SUCCESS_MESSAGE = (
         By.XPATH,
-        "//*[contains(., 'Order Placed!')]"
+        "//h2[normalize-space()='Order Placed!']"
     )
 
     def enter_payment_information(

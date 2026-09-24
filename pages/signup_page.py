@@ -7,7 +7,7 @@ class SignupPage(BasePage):
 
     ACCOUNT_INFORMATION_TITLE = (
         By.XPATH,
-        "//b[contains(., 'Enter Account Information')]"
+        "//b[normalize-space()='Enter Account Information']"
     )
 
     TITLE_MR = (
@@ -107,7 +107,7 @@ class SignupPage(BasePage):
 
     ACCOUNT_CREATED_TITLE = (
         By.XPATH,
-        "//b[contains(., 'Account Created!')]"
+        "//b[normalize-space()='Account Created!']"
     )
 
     CONTINUE_BUTTON = (
@@ -117,7 +117,7 @@ class SignupPage(BasePage):
 
     ACCOUNT_DELETED_TITLE = (
         By.XPATH,
-        "//b[contains(., 'Account Deleted!')]"
+        "//b[normalize-space()='Account Deleted!']"
     )
 
     def is_account_information_displayed(self):

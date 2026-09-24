@@ -7,37 +7,38 @@ class CartPage(BasePage):
 
     CART_PRODUCTS = (
         By.CSS_SELECTOR,
-        "#cart_info_table tbody tr"
+        "#cart_info_table tbody tr[id^='product-']"
     )
 
     PRODUCT_NAMES = (
         By.CSS_SELECTOR,
-        "#cart_info_table tbody tr[id^='product-']"
+        "#cart_info_table tbody tr[id^='product-'] td.cart_description h4 a"
     )
 
     PRODUCT_PRICES = (
         By.CSS_SELECTOR,
-        "#cart_info_table tbody tr[id^='product-'] .cart_price p"
+        "#cart_info_table tbody tr[id^='product-'] td.cart_price p"
     )
 
     PRODUCT_QUANTITIES = (
         By.CSS_SELECTOR,
-        "#cart_info_table tbody tr[id^='product-'] .cart_quantity button"
+        "#cart_info_table tbody tr[id^='product-'] td.cart_quantity button"
     )
 
     PRODUCT_TOTALS = (
         By.CSS_SELECTOR,
-        "#cart_info_table tbody tr[id^='product-'] .cart_total p"
+        "#cart_info_table tbody tr[id^='product-'] td.cart_total p"
     )
 
     PROCEED_TO_CHECKOUT_BUTTON = (
-        By.XPATH,
-        "//a[contains(., 'Proceed To Checkout')]"
+        By.CSS_SELECTOR,
+        "#do_action a.check_out"
     )
 
     REMOVE_FIRST_PRODUCT = (
-        By.XPATH,
-        "(//a[contains(@class, 'cart_quantity_delete')])[1]"
+        By.CSS_SELECTOR,
+        "#cart_info_table tbody tr[id^='product-']:first-of-type "
+        "a.cart_quantity_delete"
     )
 
     def get_product_count(self):

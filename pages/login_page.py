@@ -7,12 +7,12 @@ class LoginPage(BasePage):
 
     LOGIN_TO_ACCOUNT_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'Login to your account')]"
+        "//h2[normalize-space()='Login to your account']"
     )
 
     NEW_USER_SIGNUP_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'New User Signup!')]"
+        "//h2[normalize-space()='New User Signup!']"
     )
 
     LOGIN_EMAIL = (
@@ -47,12 +47,12 @@ class LoginPage(BasePage):
 
     LOGIN_ERROR = (
         By.XPATH,
-        "//p[contains(., 'Your email or password is incorrect!')]"
+        "//p[normalize-space()='Your email or password is incorrect!']"
     )
 
     SIGNUP_ERROR = (
         By.XPATH,
-        "//p[contains(., 'Email Address already exist!')]"
+        "//p[normalize-space()='Email Address already exist!']"
     )
 
     def is_login_page_displayed(self):

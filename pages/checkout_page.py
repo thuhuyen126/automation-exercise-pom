@@ -7,17 +7,17 @@ class CheckoutPage(BasePage):
 
     REGISTER_LOGIN_LINK = (
         By.XPATH,
-        "//p[contains(., 'Register / Login')]//a"
+        "//p//a[@href='/login' and normalize-space()='Register / Login']"
     )
 
     ADDRESS_DETAILS_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'Address Details')]"
+        "//h2[normalize-space()='Address Details']"
     )
 
     REVIEW_ORDER_TITLE = (
         By.XPATH,
-        "//h2[contains(., 'Review Your Order')]"
+        "//h2[normalize-space()='Review Your Order']"
     )
 
     ORDER_COMMENT = (
@@ -27,7 +27,7 @@ class CheckoutPage(BasePage):
 
     PLACE_ORDER_BUTTON = (
         By.XPATH,
-        "//a[contains(., 'Place Order')]"
+        "//a[normalize-space()='Place Order']"
     )
 
     DELIVERY_ADDRESS = (
